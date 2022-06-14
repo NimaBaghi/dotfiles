@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 # load zgen  -*- mode: sh; -*-
 
 export LC_ALL=en_US.UTF-8
@@ -73,7 +74,7 @@ fi
 
 export FZF_BASE="/usr/bin/fzf"
 
-zstyle :omz:plugins:ssh-agent identities work personal
+zstyle :omz:plugins:ssh-agent identities
 
 _zsh_autosuggest_strategy_histdb_top_here() {
     local query="select commands.argv from
@@ -113,7 +114,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 # This is a fix for home and end buttons
 # https://github.com/ohmyzsh/ohmyzsh/issues/7330#issuecomment-475844784
 typeset -A key
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 key[Home]=${terminfo[khome]}
 
