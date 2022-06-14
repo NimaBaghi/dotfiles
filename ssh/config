@@ -1,11 +1,11 @@
-# work account
+# # work account
 Host github.com-w
-	HostName github.com
-	IdentitiesOnly yes
-	IdentityFile ~/.ssh/work
+ 	HostName github.com
+ 	IdentitiesOnly yes
+ 	IdentityFile ~/.ssh/work
 
-# personal account
+# # personal account
 Host github.com-p
-	HostName github.com
-	IdentitiesOnly yes
-	IdentityFile ~/.ssh/personal
+ 	HostName github.com
+ 	IdentitiesOnly yes
+ 	IdentityFile ~/.ssh/personal
