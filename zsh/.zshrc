@@ -1,3 +1,4 @@
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,7 +6,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 # load zgen  -*- mode: sh; -*-
 
 export LC_ALL=en_US.UTF-8
@@ -51,7 +51,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/history-substring-search
     zgen oh-my-zsh plugins/pip
     zgen oh-my-zsh plugins/python
-	zgen oh-my-zsh plugins/ssh-agent
+    zgen oh-my-zsh plugins/ssh-agent
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zaw
     zgen load zsh-users/zsh-completions src
@@ -74,7 +74,7 @@ fi
 
 export FZF_BASE="/usr/bin/fzf"
 
-zstyle :omz:plugins:ssh-agent identities
+zstyle :omz:plugins:ssh-agent identities id_rsa_gitlab_work id_ed25519 
 
 _zsh_autosuggest_strategy_histdb_top_here() {
     local query="select commands.argv from

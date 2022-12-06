@@ -1,11 +1,20 @@
 # # work account
-Host github.com-w
- 	HostName github.com
- 	IdentitiesOnly yes
- 	IdentityFile ~/.ssh/work
+# Host github.com-w
+#  	HostName github.com
+#  	IdentitiesOnly yes
+#  	IdentityFile ~/.ssh/work
 
 # # personal account
-Host github.com-p
- 	HostName github.com
- 	IdentitiesOnly yes
- 	IdentityFile ~/.ssh/personal
+# Host github.com-p
+#  	HostName github.com
+#  	IdentitiesOnly yes
+#  	IdentityFile ~/.ssh/id_ed25519
+	
+# Host git.emakethe.com
+# 	HostName git.emakethe.com
+# 	IdentitiesOnly yes
+# 	IdentifyFile ~/.ssh/id_rsa_gitlab_work
+	# AddKeysToAgent yes
+
+# IdentifyFile ~/.ssh/id_rsa_gitlab_work
+# IdentifyFile ~/.ssh/id_ed25519
