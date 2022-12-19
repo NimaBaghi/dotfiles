@@ -80,8 +80,8 @@ keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap.set("i", "<A-q>", "<Esc>:bdelete<CR>", opts)
-keymap.set("n", "<A-q>", "<Esc>:bdelete<CR>", opts)
+keymap.set("i", "<A-q>", "<Esc>:Bdelete<CR>", opts)
+keymap.set("n", "<A-q>", "<Esc>:Bdelete<CR>", opts)
 keymap.set("n", "<A-l>", ":bnext<CR>", opts)
 keymap.set("n", "<A-h>", ":bprevious<CR>", opts)
 
@@ -108,7 +108,7 @@ keymap.set("n", "N", "Nzzzv")
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 -- nvim-tree
-keymap.set("n", "<leader>d", ":NERDTreeToggle<CR>") 
+keymap.set("n", "<leader>d", ":NvimTreeToggle<CR>") 
 
 -- telescope
 local builtin = require('telescope.builtin')

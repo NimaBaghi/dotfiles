@@ -42,7 +42,6 @@ null_ls.setup {
 		if client.supports_method("textDocument/formatting") then
 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ bufnr = bufnr })")
-            -- vim.api.nvim_command[[autocmd BufWritePre null-ls lua vim.lsp.buf.formatting({save = true})]]
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
 				buffer = bufnr,

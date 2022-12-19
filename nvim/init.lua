@@ -1,2 +1,2 @@
-require('plugins')
-require('raxel')
+require("plugins")
+require("raxel")

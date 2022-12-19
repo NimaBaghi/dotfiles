@@ -54,11 +54,13 @@ return packer.startup(function(use)
   use('tpope/vim-fugitive') -- Git Wrapper
 
   -- file explorer
-  use("preservim/nerdtree")
-  use("Xuyuanp/nerdtree-git-plugin")
-  use("PhilRunninger/nerdtree-visual-selection")
-  use("PhilRunninger/nerdtree-buffer-ops")
-  use("ryanoasis/vim-devicons")
+  use 'kyazdani42/nvim-web-devicons'
+  use 'kyazdani42/nvim-tree.lua'
+  -- use("preservim/nerdtree")
+  -- use("Xuyuanp/nerdtree-git-plugin")
+  -- use("PhilRunninger/nerdtree-visual-selection")
+  -- use("PhilRunninger/nerdtree-buffer-ops")
+  -- use("ryanoasis/vim-devicons")
 
   use("ThePrimeagen/vim-be-good") -- practice vim (CMD: :VimBeGood)
 
@@ -78,7 +80,10 @@ return packer.startup(function(use)
 
   use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
-  use ('romgrk/barbar.nvim') -- tabs tracker
+  -- use ('romgrk/barbar.nvim') -- tabs tracker
+  -- bufferline
+  use "akinsho/bufferline.nvim"
+  use "moll/vim-bbye"
 
   use("nvim-lualine/lualine.nvim") -- statusline
 
@@ -116,6 +121,7 @@ return packer.startup(function(use)
 		  {'saadparwaiz1/cmp_luasnip'},
 		  {'hrsh7th/cmp-nvim-lsp'},
 		  {'hrsh7th/cmp-nvim-lua'},
+          -- {'tzachar/cmp-tabnine' , run='./install.sh'},
 
 		  -- Snippets
 		  {'L3MON4D3/LuaSnip'},
