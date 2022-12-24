@@ -51,29 +51,56 @@ M.setup = function()
 	})
 end
 
--- local function lsp_keymaps(bufnr)
--- 	local opts = { noremap = true, silent = true }
--- 	local keymap = vim.api.nvim_buf_set_keymap
--- 	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
--- 	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
--- 	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
--- 	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
--- 	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
--- 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
--- 	keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
--- 	keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
--- 	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
--- end
+local function lsp_highlight_document(client)
+	-- Set autocommands conditional on server_capabilities
+	if client.server_capabilities.documentHighlight then
+		vim.api.nvim_exec(
+			[[
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]],
+			false
+		)
+	end
+end
+
+local function lsp_keymaps(bufnr)
+	local opts = { noremap = true, silent = true }
+	local keymap = vim.api.nvim_buf_set_keymap
+
+	-- keymap("n", "gd", function() vim.lsp.buf.definition() end, opts)
+	-- keymap("n", "K", function() vim.lsp.buf.hover() end, opts)
+	-- keymap("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+	-- keymap("n", "<leader>e", function() vim.diagnostic.open_float() end, opts)
+	-- keymap("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+	-- keymap("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+	-- keymap("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+	-- keymap("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+	-- keymap("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+	-- keymap("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+	keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+	keymap(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
+	keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+	keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
+	keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
+	keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+	keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+end
 
 M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
-		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentFormattingProvider = true
 	end
 
 	if client.name == "sumneko_lua" then
@@ -81,6 +108,7 @@ M.on_attach = function(client, bufnr)
 	end
 
 	lsp_keymaps(bufnr)
+	lsp_highlight_document(client)
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
 		return

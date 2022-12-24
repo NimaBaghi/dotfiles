@@ -16,12 +16,12 @@ keymap.set("n", "x", '"_x')
 keymap.set("v", "p", '"_dP', opts)
 
 -- next greatest remap ever : asbjornHaland (leader y copy to system clipboard, y copy in vim)
-keymap.set("n", "<leader>y", "\"+y")
-keymap.set("v", "<leader>y", "\"+y")
-keymap.set("n", "<leader>Y", "\"+Y")
+keymap.set("n", "<leader>y", '"+y')
+keymap.set("v", "<leader>y", '"+y')
+keymap.set("n", "<leader>Y", '"+Y')
 
-keymap.set("n", "<leader>d", "\"_d")
-keymap.set("v", "<leader>d", "\"_d")
+keymap.set("n", "<leader>d", '"_d')
+keymap.set("v", "<leader>d", '"_d')
 
 -- change project
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
@@ -30,7 +30,6 @@ keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 -- change some file to executable file
 keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
 
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
@@ -87,10 +86,10 @@ keymap.set("n", "<A-h>", ":bprevious<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation
-keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+-- keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+-- keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+-- keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Switch ; and :
 keymap.set("n", ";", ":")
@@ -108,12 +107,12 @@ keymap.set("n", "N", "Nzzzv")
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 -- nvim-tree
-keymap.set("n", "<leader>d", ":NvimTreeToggle<CR>") 
+keymap.set("n", "<leader>d", ":NvimTreeToggle<CR>")
 
 -- telescope
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
 -- vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-keymap.set('n', '<C-p>', builtin.git_files, {})
+keymap.set("n", "<C-p>", builtin.git_files, {})
 -- vim.keymap.set('n', '<leader>ps', function()
 -- 	builtin.grep_string({ search = vim.fn.input("Grep > ") });
 -- end)
@@ -122,4 +121,3 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in 
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-
