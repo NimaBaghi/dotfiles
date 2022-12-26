@@ -1,3 +1,4 @@
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -9,6 +10,7 @@ fi
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
 
 # These lines needs to be before loading oh-my-zsh
 source "${HOME}/.zgen/zgen.zsh"
@@ -50,7 +52,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/history-substring-search
     zgen oh-my-zsh plugins/pip
     zgen oh-my-zsh plugins/python
-	zgen oh-my-zsh plugins/ssh-agent
+	zgen oh-my-zsh plugins/ssh-agent id_rsa_gitlab_work id_ed25519
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zaw
     zgen load zsh-users/zsh-completions src
@@ -113,7 +115,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 # This is a fix for home and end buttons
 # https://github.com/ohmyzsh/ohmyzsh/issues/7330#issuecomment-475844784
 typeset -A key
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 key[Home]=${terminfo[khome]}
 
