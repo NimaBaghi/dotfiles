@@ -178,6 +178,8 @@ bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
 
+# export http_proxy=http://127.0.0.1:10809
+# export socks_proxy=https://127.0.0.1:10808
 export JAVA_HOME=/usr/lib/jvm/default
 export DEFAULT_USER="sharp"
 export GOPATH="$HOME/.go"
@@ -265,6 +267,8 @@ export PATH="$PATH:$HOME/.config/rofi/bin"
 eval "$(direnv hook zsh)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+ssh-add ~/.ssh/id_rsa_gitlab_work &> /dev/null
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
